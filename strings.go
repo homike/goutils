@@ -29,3 +29,16 @@ func GetBetweenStr_FirstLast(str, start, end string) string {
 	str = string([]byte(str)[:m])
 	return str
 }
+
+// delete last 'delStr' in str
+func DelLastStr(str, delStr string) string {
+	arrStr := []byte(str)
+	index := 0
+	for i := len(arrStr) - 1; i >= 0; i-- {
+		if string(arrStr[i]) == delStr {
+			index = i
+			break
+		}
+	}
+	return string(append(arrStr[:index], arrStr[index+1:]...))
+}

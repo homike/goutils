@@ -9,6 +9,7 @@ import (
 
 type ForeachFunc func(filename string) error
 
+// forearch dir and execute the callback
 func ForeachDir(pathname string, f ForeachFunc) error {
 	rd, outErr := ioutil.ReadDir(pathname)
 	for _, fi := range rd {
@@ -33,6 +34,7 @@ func ForeachDir(pathname string, f ForeachFunc) error {
 	return outErr
 }
 
+// read files return by lines
 func ReadLinesFromFile(fn string) ([]string, error) {
 	f, err := os.Open(fn)
 	if err != nil {
@@ -51,6 +53,7 @@ func ReadLinesFromFile(fn string) ([]string, error) {
 	return lines, nil
 }
 
+// write lines into file
 func WriteLinesToFile(fn string, lines []string) error {
 	err := os.Remove(fn)
 	if err != nil {
