@@ -2,6 +2,7 @@ package goutils
 
 import (
 	"bufio"
+	"fmt"
 	"io"
 	"io/ioutil"
 	"os"
@@ -57,7 +58,7 @@ func ReadLinesFromFile(fn string) ([]string, error) {
 func WriteLinesToFile(fn string, lines []string) error {
 	err := os.Remove(fn)
 	if err != nil {
-		return err
+		fmt.Println("remove file error:", err)
 	}
 
 	newf, err := os.Create(fn)
